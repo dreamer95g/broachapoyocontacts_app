@@ -36,14 +36,14 @@ export const CategoryTable = ({ categoriesList, setSelectedIds }) => {
           >
             Buscar
           </Button>
-          {/* <Button
-            // onClick={() => handleReset(clearFilters)}
-            onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+          <Button
+            onClick={() => handleReset(clearFilters)}
+            // onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
             size="small"
             style={{ width: 90 }}
           >
-            Resetear
-          </Button> */}
+            Limpiar
+          </Button>
         </Space>
       </div>
     ),
@@ -71,13 +71,20 @@ export const CategoryTable = ({ categoriesList, setSelectedIds }) => {
     },
   });
 
+  const handleReset = (clearFilters) => {
+    clearFilters();
+    setState({ searchText: "" });
+  };
+
   const columns = [
     {
       title: "Categoría",
       dataIndex: "name",
       ...getColumnSearchProps("name"),
-      defaultSortOrder: "descend",
-      sorter: (a, b) => a.name.length - b.name.length,
+      key: "name",
+      // sorter: (a, b) => a.name.length - b.name.length,
+      sorter: (a) => a.name.length,
+      sortDirections: ["descend", "ascend"],
     },
   ];
 
@@ -86,7 +93,7 @@ export const CategoryTable = ({ categoriesList, setSelectedIds }) => {
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
       // console.table(
-      //   `selectedRowKeys: ${selectedRowKeys}`,
+      //   `selectedRowKey : ${selectedRowKeys}`,
       //   "selectedRows: ",
       //   selectedRows
       // );
