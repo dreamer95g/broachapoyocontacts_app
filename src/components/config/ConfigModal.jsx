@@ -97,8 +97,8 @@ export const ConfigModal = ({
           handleOk();
 
           dispatch(finishLoadingAction());
-          history.push("/auth/login");
-          handleLogout();
+          history.replace("/auth/login");
+          // handleLogout();
         } else {
           openNotification(
             "error",
