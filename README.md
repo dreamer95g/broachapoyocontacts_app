@@ -1,6 +1,6 @@
 <div align="center">
 
-# Broach Apoyo Contacts
+# Broach Apoyo Contacts App 1.1 Stable
 
 ## Tecnologías
 
